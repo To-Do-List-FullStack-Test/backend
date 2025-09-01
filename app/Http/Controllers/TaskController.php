@@ -20,9 +20,9 @@ class TaskController extends Controller
         try {
             $userId = Auth::id();
             $perPage = $request->get('per_page', 15);
-            
+
             $tasks = $this->taskService->getUserTasksPaginated($userId, $perPage);
-            
+
             return response()->json([
                 'tasks' => $tasks
             ]);
@@ -39,7 +39,7 @@ class TaskController extends Controller
         try {
             $userId = Auth::id();
             $task = $this->taskService->createTask($request->validated(), $userId);
-            
+
             return response()->json([
                 'message' => 'Task created successfully',
                 'task' => $task
@@ -58,13 +58,13 @@ class TaskController extends Controller
             $userId = Auth::id();
             $tasks = $this->taskService->getUserTasks($userId);
             $task = $tasks->find($id);
-            
+
             if (!$task) {
                 return response()->json([
                     'message' => 'Task not found'
                 ], 404);
             }
-            
+
             return response()->json([
                 'task' => $task
             ]);
@@ -81,7 +81,7 @@ class TaskController extends Controller
         try {
             $userId = Auth::id();
             $updated = $this->taskService->updateTask($id, $request->validated(), $userId);
-            
+
             if (!$updated) {
                 return response()->json([
                     'message' => 'Task not found or update failed'
@@ -104,7 +104,7 @@ class TaskController extends Controller
         try {
             $userId = Auth::id();
             $deleted = $this->taskService->deleteTask($id, $userId);
-            
+
             if (!$deleted) {
                 return response()->json([
                     'message' => 'Task not found or deletion failed'
@@ -127,7 +127,7 @@ class TaskController extends Controller
         try {
             $userId = Auth::id();
             $updated = $this->taskService->markAsCompleted($id, $userId);
-            
+
             if (!$updated) {
                 return response()->json([
                     'message' => 'Task not found or update failed'
