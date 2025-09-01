@@ -27,7 +27,6 @@ class Task extends Model
 
     protected $fillable = [
         'user_id',
-        'category_id',
         'title',
         'description',
         'status',
@@ -54,7 +53,7 @@ class Task extends Model
 
 
 
-   
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
