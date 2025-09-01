@@ -28,12 +28,12 @@ class AuthService
     public function login(array $credentials): ?string
     {
         $user = $this->userRepository->findByEmail($credentials['email']);
-
+    
         if (!$user || !Hash::check($credentials['password'], $user->password)) {
             return null;
         }
-
-        return auth()->login($user);
+    
+        return auth('api')->login($user);
     }
 
 
