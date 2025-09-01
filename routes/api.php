@@ -14,6 +14,12 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/logout', [UserController::class, 'logout']);
     Route::get('/profile', [UserController::class, 'profile']);
     Route::put('/profile', [UserController::class, 'updateProfile']);
+    Route::prefix('notifications')->group(function () {
+        Route::get('/', [NotificationController::class, 'index']);
+        Route::get('unread-count', [NotificationController::class, 'unreadCount']);
+        Route::post('mark-all-read', [NotificationController::class, 'markAllAsRead']);
+        Route::patch('{id}/read', [NotificationController::class, 'markAsRead']);
+    });
 });
 
 Route::middleware(['auth:api', 'task.access'])->group(function () {

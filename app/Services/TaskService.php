@@ -27,13 +27,30 @@ class TaskService
 
     public function updateTask(int $taskId, array $data, int $userId): bool
     {
-        return $this->taskRepository->update($taskId, $data, $userId);
+        $updated = $this->taskRepository->update($taskId, $data, $userId);
+
+        if ($updated) {
+            $task = $this->taskRepository->findByIdAndUser($taskId, $userId);
+            event(new TaskUpdated($task));
+        }
+
+        return $updated;
     }
 
 
     public function deleteTask(int $taskId, int $userId): bool
     {
-        return $this->taskRepository->delete($taskId, $userId);
+        $task = $this->taskRepository->findByIdAndUser($taskId, $userId);
+
+        if ($task) {
+            $deleted = $this->taskRepository->delete($taskId, $userId);
+            if ($deleted) {
+                event(new TaskDeleted($taskId, $task->title, $userId));
+            }
+            return $deleted;
+        }
+
+        return false;
     }
 
 
@@ -54,5 +71,5 @@ class TaskService
         return $this->taskRepository->paginate($userId, $perPage);
     }
 
-    
+
 }
