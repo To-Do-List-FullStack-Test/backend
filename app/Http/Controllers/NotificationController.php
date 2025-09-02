@@ -49,7 +49,7 @@ class NotificationController extends Controller
         }
     }
 
-   
+
     public function markAsRead(int $id): JsonResponse
     {
         try {

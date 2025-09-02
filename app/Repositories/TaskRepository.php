@@ -44,7 +44,6 @@ class TaskRepository implements TaskRepositoryInterface
     public function paginate(int $userId, int $perPage = 15): LengthAwarePaginator
     {
         return Task::where('user_id', $userId)
-                  ->with('category')
                   ->orderBy('created_at', 'desc')
                   ->paginate($perPage);
     }

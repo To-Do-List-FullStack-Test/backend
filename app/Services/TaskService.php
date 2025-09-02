@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Models\Task;
 use App\Models\User;
 use App\Repositories\Contracts\TaskRepositoryInterface;
+use App\Services\NotificationService;
 use App\Events\TaskCreated;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -11,7 +12,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class TaskService
 {
     public function __construct(
-        private TaskRepositoryInterface $taskRepository
+        private TaskRepositoryInterface $taskRepository,
+        private NotificationService $notificationService
     ) {}
 
     public function createTask(array $data, int $userId): Task
@@ -82,7 +84,7 @@ class TaskService
                     [
                         'task_id' => $task->id,
                         'task_title' => $task->title,
-                        'deleted_at' => now()->toISOString()
+                        
                     ]
                 );
             }

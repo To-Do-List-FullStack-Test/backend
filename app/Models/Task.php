@@ -7,23 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * Class Task
- *
- * @property int $id
- * @property int $user_id
- * @property string $title
- * @property string|null $description
- * @property string $status
- * @property string $priority
- * @property \Illuminate\Support\Carbon|null $due_date
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- */
+
 class Task extends Model
 {
     use HasFactory, SoftDeletes;
+     use SoftDeletes; 
 
     protected $fillable = [
         'user_id',
@@ -38,7 +26,7 @@ class Task extends Model
         'due_date' => 'date',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
-        'deleted_at' => 'datetime',
+
     ];
 
 
