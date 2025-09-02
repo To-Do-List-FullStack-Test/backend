@@ -73,26 +73,26 @@ class RegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'full_name.required' => 'Le nom complet est obligatoire.',
-            'full_name.min' => 'Le nom doit contenir au moins :min caractères.',
-            'full_name.max' => 'Le nom ne peut pas dépasser :max caractères.',
-            'full_name.regex' => 'Le nom ne peut contenir que des lettres, espaces, tirets et apostrophes.',
+            'full_name.required' => 'Full name is required.',
+            'full_name.min' => 'Name must contain at least :min characters.',
+            'full_name.max' => 'Name cannot exceed :max characters.',
+            'full_name.regex' => 'Name can only contain letters, spaces, hyphens and apostrophes.',
 
-            'email.required' => 'L\'adresse email est obligatoire.',
-            'email.email' => 'Veuillez saisir une adresse email valide.',
-            'email.unique' => 'Cette adresse email est déjà utilisée.',
+            'email.required' => 'Email address is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'email.unique' => 'This email address is already in use.',
 
 
-            'address.min' => 'L\'adresse doit contenir au moins :min caractères.',
-            'address.max' => 'L\'adresse ne peut pas dépasser :max caractères.',
+            'address.min' => 'Address must contain at least :min characters.',
+            'address.max' => 'Address cannot exceed :max characters.',
 
-            'image.image' => 'Le fichier doit être une image.',
-            'image.mimes' => 'L\'image doit être au format: jpeg, jpg, png ou gif.',
-            'image.max' => 'L\'image ne peut pas dépasser 2MB.',
-            'image.dimensions' => 'L\'image doit avoir une taille entre 100x100 et 1000x1000 pixels.',
+            'image.image' => 'The file must be an image.',
+            'image.mimes' => 'The image must be in format: jpeg, jpg, png or gif.',
+            'image.max' => 'The image cannot exceed 2MB.',
+            'image.dimensions' => 'The image must have a size between 100x100 and 1000x1000 pixels.',
 
-            'password.required' => 'Le mot de passe est obligatoire.',
-            'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
+            'password.required' => 'Password is required.',
+            'password.confirmed' => 'Password confirmation does not match.',
         ];
     }
 

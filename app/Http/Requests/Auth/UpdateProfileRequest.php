@@ -75,13 +75,13 @@ class UpdateProfileRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'full_name.required' => 'Le nom complet est obligatoire.',
-            'full_name.regex' => 'Le nom ne peut contenir que des lettres, espaces, tirets et apostrophes.',
-            'email.unique' => 'Cette adresse email est déjà utilisée.',
-            'phone_number.regex' => 'Le numéro de téléphone n\'est pas valide.',
-            'image.image' => 'Le fichier doit être une image.',
-            'image.max' => 'L\'image ne peut pas dépasser 2MB.',
-            'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
+            'full_name.required' => 'Full name is required.',
+            'full_name.regex' => 'Name can only contain letters, spaces, hyphens and apostrophes.',
+            'email.unique' => 'This email address is already in use.',
+            'phone_number.regex' => 'The phone number is not valid.',
+            'image.image' => 'The file must be an image.',
+            'image.max' => 'The image cannot exceed 2MB.',
+            'password.confirmed' => 'Password confirmation does not match.',
         ];
     }
 }

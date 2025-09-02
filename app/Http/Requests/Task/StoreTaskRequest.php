@@ -26,7 +26,7 @@ class StoreTaskRequest extends FormRequest
                 'string',
                 'min:3',
                 'max:255',
-                'regex:/^[a-zA-ZÀ-ÿ0-9\s\-\'\.\,\!\?\(\)]+$/' // Lettres, chiffres, ponctuation de base
+                'regex:/^[a-zA-ZÀ-ÿ0-9\s\-\'\.\.\,\!\?\(\)]+$/' // Letters, numbers, basic punctuation
             ],
             'description' => [
                 'nullable',
@@ -55,20 +55,18 @@ class StoreTaskRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'title.required' => 'Le titre de la tâche est obligatoire.',
-            'title.min' => 'Le titre doit contenir au moins :min caractères.',
-            'title.max' => 'Le titre ne peut pas dépasser :max caractères.',
-            'title.regex' => 'Le titre contient des caractères non autorisés.',
+            'title.required' => 'The task title is required.',
+            'title.min' => 'The title must contain at least :min characters.',
+            'title.max' => 'The title cannot exceed :max characters.',
+            'title.regex' => 'The title contains unauthorized characters.',
 
-            'description.max' => 'La description ne peut pas dépasser :max caractères.',
+            'description.max' => 'The description cannot exceed :max characters.',
 
-            'status.in' => 'Le statut sélectionné n\'est pas valide.',
-            'priority.in' => 'La priorité sélectionnée n\'est pas valide.',
+            'status.in' => 'The selected status is not valid.',
+            'priority.in' => 'The selected priority is not valid.',
 
-            'due_date.date' => 'La date d\'échéance n\'est pas valide.',
-            'due_date.after_or_equal' => 'La date d\'échéance ne peut pas être dans le passé.',
-
-
+            'due_date.date' => 'The due date is not valid.',
+            'due_date.after_or_equal' => 'The due date cannot be in the past.',
         ];
     }
 

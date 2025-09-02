@@ -1,61 +1,159 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Application de Gestion de Tâches (Todo List)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Cette application full stack permet de gérer des tâches personnelles avec un système d'authentification, de notifications et de gestion des tâches en temps réel.
 
-## About Laravel
+## Architecture du Projet
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Le projet est divisé en deux parties principales :
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Backend (Laravel)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Framework** : Laravel 12
+- **Base de données** : MySql
+- **Authentification** : JWT (JSON Web Token)
+- **Temps réel** : Pusher pour les notifications
 
-## Learning Laravel
+### Frontend (Vue.js)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Framework** : Vue.js 3 avec Composition API
+- **Gestion d'état** : Pinia
+- **Routage** : Vue Router
+- **HTTP Client** : Axios
+- **Temps réel** : Laravel Echo avec Pusher
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Fonctionnalités
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Authentification** : Inscription, connexion et déconnexion
+- **Gestion de profil** : Affichage et modification des informations utilisateur
+- **Gestion des tâches** :
+  - Création, lecture, mise à jour et suppression de tâches
+  - Filtrage par statut et priorité
+  - Recherche de tâches
+  - Marquage des tâches comme terminées
+- **Notifications** : Notifications en temps réel pour les actions importantes
 
-## Laravel Sponsors
+## Prérequis
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- PHP 8.2 ou supérieur
+- Composer
+- Node.js (version 20.19.0 ou 22.12.0 ou supérieur)
+- npm ou yarn
 
-### Premium Partners
+## Installation et Configuration
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 1. Cloner le dépôt
 
-## Contributing
+```bash
+git clone <url-du-depot>
+cd toDoList
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Configuration du Backend
 
-## Code of Conduct
+```bash
+cd todo-backend
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Installation des dépendances
+composer install
 
-## Security Vulnerabilities
+# Copier le fichier d'environnement
+cp .env.example .env
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Générer la clé d'application
+php artisan key:generate
 
-## License
+# Générer la clé JWT
+php artisan jwt:secret
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+# Exécuter les migrations
+php artisan migrate
+
+# Optionnel : Ajouter des données de test
+php artisan db:seed
+```
+
+### 3. Configuration du Frontend
+
+```bash
+cd ../todo-frontend
+
+# Installation des dépendances
+npm install
+
+# Vérifier que le fichier .env pointe vers l'API backend
+# VITE_API_URL=http://localhost:8000/api
+```
+
+## Démarrage de l'Application
+
+### 1. Démarrer le Backend
+
+```bash
+cd todo-backend
+php artisan serve
+```
+
+Le serveur backend sera accessible à l'adresse : http://localhost:8000
+
+### 2. Démarrer le Frontend
+
+```bash
+cd todo-frontend
+npm run dev
+```
+
+L'application frontend sera accessible à l'adresse : http://localhost:5173
+
+## Tests
+
+### Tests Backend
+
+```bash
+cd todo-backend
+php artisan test
+```
+
+## Structure des API
+
+### Authentification
+
+- `POST /api/auth/register` - Inscription d'un nouvel utilisateur
+- `POST /api/auth/login` - Connexion d'un utilisateur
+- `POST /api/logout` - Déconnexion (nécessite authentification)
+
+### Profil Utilisateur
+
+- `GET /api/profile` - Obtenir le profil de l'utilisateur connecté
+- `PUT /api/profile` - Mettre à jour le profil de l'utilisateur
+
+### Tâches
+
+- `GET /api/tasks` - Liste des tâches de l'utilisateur
+- `POST /api/tasks` - Créer une nouvelle tâche
+- `GET /api/tasks/{id}` - Détails d'une tâche spécifique
+- `PUT /api/tasks/{id}` - Mettre à jour une tâche
+- `DELETE /api/tasks/{id}` - Supprimer une tâche
+- `PATCH /api/tasks/{id}/complete` - Marquer une tâche comme terminée
+
+### Notifications
+
+- `GET /api/notifications` - Liste des notifications
+- `GET /api/notifications/unread-count` - Nombre de notifications non lues
+- `POST /api/notifications/mark-all-read` - Marquer toutes les notifications comme lues
+- `PATCH /api/notifications/{id}/read` - Marquer une notification comme lue
+
+## Contribution
+
+Pour contribuer au projet, veuillez suivre les étapes suivantes :
+
+1. Forker le projet
+2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/amazing-feature`)
+3. Commiter vos changements (`git commit -m 'Add some amazing feature'`)
+4. Pousser vers la branche (`git push origin feature/amazing-feature`)
+5. Ouvrir une Pull Request
+
+## Licence
+
+Ce projet est sous licence MIT.

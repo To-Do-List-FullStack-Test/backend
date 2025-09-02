@@ -57,14 +57,18 @@ class UpdateTaskRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'title.required' => 'Le titre de la tâche est obligatoire.',
-            'title.min' => 'Le titre doit contenir au moins :min caractères.',
-            'title.regex' => 'Le titre contient des caractères non autorisés.',
-            'description.max' => 'La description ne peut pas dépasser :max caractères.',
-            'status.in' => 'Le statut sélectionné n\'est pas valide.',
-            'priority.in' => 'La priorité sélectionnée n\'est pas valide.',
-            'due_date.after_or_equal' => 'La date d\'échéance ne peut pas être dans le passé.',
+            'title.required' => 'The task title is required.',
+            'title.min' => 'The title must contain at least :min characters.',
+            'title.max' => 'The title cannot exceed :max characters.',
+            'title.regex' => 'The title contains unauthorized characters.',
 
+            'description.max' => 'The description cannot exceed :max characters.',
+
+            'status.in' => 'The selected status is not valid.',
+            'priority.in' => 'The selected priority is not valid.',
+
+            'due_date.date' => 'The due date is not valid.',
+            'due_date.after_or_equal' => 'The due date cannot be in the past.',
         ];
     }
 
