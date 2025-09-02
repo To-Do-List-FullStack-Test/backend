@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-class AuthController extends Controller
+class UserController extends Controller
 {
     public function __construct(
         private AuthService $authService,
@@ -160,7 +160,7 @@ class AuthController extends Controller
         ]);
     }
 
-    
+
     public function updateProfile(UpdateProfileRequest $request): JsonResponse
     {
         try {
