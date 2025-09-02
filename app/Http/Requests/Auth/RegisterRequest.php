@@ -38,7 +38,7 @@ class RegisterRequest extends FormRequest
             'phone_number' => [
                 'nullable',
                 'string',
-                'regex:/^(\+|00)?[1-9]\d{1,14}$/', 
+                
                 'max:20'
             ],
             'address' => [
@@ -82,7 +82,6 @@ class RegisterRequest extends FormRequest
             'email.email' => 'Veuillez saisir une adresse email valide.',
             'email.unique' => 'Cette adresse email est déjà utilisée.',
 
-            'phone_number.regex' => 'Le numéro de téléphone n\'est pas valide.',
 
             'address.min' => 'L\'adresse doit contenir au moins :min caractères.',
             'address.max' => 'L\'adresse ne peut pas dépasser :max caractères.',

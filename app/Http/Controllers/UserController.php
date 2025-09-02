@@ -64,14 +64,16 @@ class UserController extends Controller
         try {
             $credentials = $request->validated();
 
-            if (!$token = auth()->attempt($credentials)) {
+            $token = auth('api')->attempt($credentials);
+            $expires = auth('api')->factory()->getTTL() * 60;
+            if (!$token = auth('api')->attempt($credentials)) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Invalid credentials'
                 ], 401);
             }
 
-            $user = auth()->user();
+            $user = auth('api')->user();
 
             return response()->json([
                 'success' => true,
@@ -87,7 +89,7 @@ class UserController extends Controller
                     ],
                     'token' => $token,
                     'token_type' => 'bearer',
-                    'expires_in' => auth()->factory()->getTTL() * 60
+                    'expires_in' => $expires
                 ]
             ]);
 
@@ -97,6 +99,7 @@ class UserController extends Controller
                 'message' => 'Error during connection',
                 'error' => config('app.debug') ? $e->getMessage() : 'An error occurred'
             ], 500);
+            dd($e);
         }
     }
 
