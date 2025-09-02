@@ -4,7 +4,7 @@ Cette application full stack permet de gérer des tâches personnelles avec un s
 
 ## Architecture du Projet
 
-Le projet est divisé en deux parties principales :
+Le projet est divisé en deux parties principales on va parler sur Le backend:
 
 ### Backend (Laravel)
 
@@ -13,24 +13,6 @@ Le projet est divisé en deux parties principales :
 - **Authentification** : JWT (JSON Web Token)
 - **Temps réel** : Pusher pour les notifications
 
-### Frontend (Vue.js)
-
-- **Framework** : Vue.js 3 avec Composition API
-- **Gestion d'état** : Pinia
-- **Routage** : Vue Router
-- **HTTP Client** : Axios
-- **Temps réel** : Laravel Echo avec Pusher
-
-## Fonctionnalités
-
-- **Authentification** : Inscription, connexion et déconnexion
-- **Gestion de profil** : Affichage et modification des informations utilisateur
-- **Gestion des tâches** :
-  - Création, lecture, mise à jour et suppression de tâches
-  - Filtrage par statut et priorité
-  - Recherche de tâches
-  - Marquage des tâches comme terminées
-- **Notifications** : Notifications en temps réel pour les actions importantes
 
 ## Prérequis
 
@@ -74,17 +56,7 @@ php artisan migrate
 php artisan db:seed
 ```
 
-### 3. Configuration du Frontend
 
-```bash
-cd ../todo-frontend
-
-# Installation des dépendances
-npm install
-
-# Vérifier que le fichier .env pointe vers l'API backend
-# VITE_API_URL=http://localhost:8000/api
-```
 
 ## Démarrage de l'Application
 
@@ -97,14 +69,7 @@ php artisan serve
 
 Le serveur backend sera accessible à l'adresse : http://localhost:8000
 
-### 2. Démarrer le Frontend
 
-```bash
-cd todo-frontend
-npm run dev
-```
-
-L'application frontend sera accessible à l'adresse : http://localhost:5173
 
 ## Tests
 

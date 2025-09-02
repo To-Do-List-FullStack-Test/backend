@@ -4,7 +4,7 @@ This full stack application allows you to manage personal tasks with an authenti
 
 ## Project Architecture
 
-The project is divided into two main parts:
+The project is divided into two main parts we talk here on Backend:
 
 ### Backend (Laravel)
 
@@ -13,24 +13,7 @@ The project is divided into two main parts:
 - **Authentication**: JWT (JSON Web Token)
 - **Real-time**: Pusher for notifications
 
-### Frontend (Vue.js)
 
-- **Framework**: Vue.js 3 with Composition API
-- **State Management**: Pinia
-- **Routing**: Vue Router
-- **HTTP Client**: Axios
-- **Real-time**: Laravel Echo with Pusher
-
-## Features
-
-- **Authentication**: Registration, login, and logout
-- **Profile Management**: Display and modification of user information
-- **Task Management**:
-  - Create, read, update, and delete tasks
-  - Filter by status and priority
-  - Search tasks
-  - Mark tasks as completed
-- **Notifications**: Real-time notifications for important actions
 
 ## Prerequisites
 
@@ -74,17 +57,7 @@ php artisan migrate
 php artisan db:seed
 ```
 
-### 3. Frontend Configuration
 
-```bash
-cd ../todo-frontend
-
-# Install dependencies
-npm install
-
-# Verify that the .env file points to the backend API
-# VITE_API_URL=http://localhost:8000/api
-```
 
 ## Starting the Application
 
@@ -97,14 +70,6 @@ php artisan serve
 
 The backend server will be accessible at: http://localhost:8000
 
-### 2. Start the Frontend
-
-```bash
-cd todo-frontend
-npm run dev
-```
-
-The frontend application will be accessible at: http://localhost:5173
 
 ## Tests
 
